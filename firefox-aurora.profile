@@ -1,10 +1,43 @@
-# Firejail profile for Mozilla Firefox (Iceweasel in Debian)
+# Firejail profile for firefox-aurora
+# This file is overwritten after every install/update
+# Persistent local customizations
+include /etc/firejail/firefox-aurora.local
+# Persistent global definitions
+include /etc/firejail/globals.local
 
-noblacklist ~/.mozilla
 noblacklist ~/.cache/mozilla
+noblacklist ~/.mozilla
+
 include /etc/firejail/disable-common.inc
-include /etc/firejail/disable-programs.inc
 include /etc/firejail/disable-devel.inc
+include /etc/firejail/disable-programs.inc
+
+mkdir ~/.cache/mozilla/firefox
+mkdir ~/.mozilla
+whitelist ${DOWNLOADS}
+whitelist /opt/firefox-aurora/
+whitelist ~/.cache/gnome-mplayer/plugin
+whitelist ~/.cache/mozilla/firefox
+whitelist ~/.config/gnome-mplayer
+whitelist ~/.config/keepassx
+whitelist ~/.config/lastpass
+whitelist ~/.config/pipelight-silverlight5.1
+whitelist ~/.config/pipelight-widevine
+whitelist ~/.keepassx
+whitelist ~/.keysnail.js
+whitelist ~/.lastpass
+whitelist ~/.mozilla
+whitelist ~/.pentadactyl
+whitelist ~/.pentadactylrc
+whitelist ~/.pki
+whitelist ~/.vimperator
+whitelist ~/.vimperatorrc
+whitelist ~/.wine-pipelight
+whitelist ~/.wine-pipelight64
+whitelist ~/.zotero
+whitelist ~/dwhelper
+whitelist ~/keepassx.kdbx
+include /etc/firejail/whitelist-common.inc
 
 caps.drop all
 netfilter
@@ -14,38 +47,7 @@ protocol unix,inet,inet6,netlink
 seccomp
 tracelog
 
-whitelist ${DOWNLOADS}
-mkdir ~/.mozilla
-whitelist ~/.mozilla
-mkdir ~/.cache/mozilla/firefox
-whitelist ~/.cache/mozilla/firefox
-whitelist ~/dwhelper
-whitelist ~/.zotero
-whitelist ~/.vimperatorrc
-whitelist ~/.vimperator
-whitelist ~/.pentadactylrc
-whitelist ~/.pentadactyl
-whitelist ~/.keysnail.js
-whitelist ~/.config/gnome-mplayer
-whitelist ~/.cache/gnome-mplayer/plugin
-whitelist ~/.pki
-whitelist /opt/firefox-aurora/
+# private-etc passwd,group,hostname,hosts,localtime,nsswitch.conf,resolv.conf,gtk-2.0,pango,fonts,iceweasel,firefox,adobe,mime.types,mailcap,asound.conf,pulse
 
+# CLOBBERED COMMENTS
 # lastpass, keepassx
-whitelist ~/.keepassx
-whitelist ~/.config/keepassx
-whitelist ~/keepassx.kdbx
-whitelist ~/.lastpass
-whitelist ~/.config/lastpass
-
-
-#silverlight
-whitelist ~/.wine-pipelight
-whitelist ~/.wine-pipelight64
-whitelist ~/.config/pipelight-widevine
-whitelist ~/.config/pipelight-silverlight5.1
-
-include /etc/firejail/whitelist-common.inc
-
-# experimental features
-#private-etc passwd,group,hostname,hosts,localtime,nsswitch.conf,resolv.conf,gtk-2.0,pango,fonts,iceweasel,firefox,adobe,mime.types,mailcap,asound.conf,pulse
