@@ -31,6 +31,3 @@ noroot
 protocol unix,inet,inet6,netlink
 seccomp
 tracelog
-
-# CLOBBERED COMMENTS
-# lastpass, keepassx

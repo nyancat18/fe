@@ -17,6 +17,7 @@ whitelist ${HOME}/.kde4
 whitelist ${HOME}/.themes
 whitelist ${HOME}/Images
 whitelist /tmp/.X11-unix
+# DBus has been forced to use an ordinary unix socket
 whitelist /tmp/dbus_session_socket
 include /etc/firejail/whitelist-common.inc
 
@@ -34,6 +35,3 @@ private-dev
 
 noexec /home
 noexec /tmp
-
-# CLOBBERED COMMENTS
-# I have forced DBus to use an ordinary unix socket

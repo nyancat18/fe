@@ -22,9 +22,7 @@ seccomp
 shell none
 tracelog
 
+# cvlc doesn't like private-bin
 # private-bin vlc,cvlc,nvlc,rvlc,qvlc,svlc
 private-dev
 private-tmp
-
-# CLOBBERED COMMENTS
-# clvc doesn't like private-bin
